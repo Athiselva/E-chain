@@ -20,10 +20,11 @@ body {
 </head>
 <body>
 <br><br><br><br>
+<center><h2>Welcome ${Name }</h2><br></center>
 			<form method="post" action="SearchAttendance.jsp">
 <center>
-			<h2>Welcome</h2><br>
-			<button type="submit">Attendance Report</button>
+			
+			<button type="submit">Attendance Report</button><br><br>
 
 
 </center>
@@ -31,7 +32,7 @@ body {
 <form method="post" action="EnterTimesheet.jsp">
 <center>
 				<br>
-			<button type="submit">Timesheets</button>
+			<button type="submit">Timesheets</button><br><br>
 
 
 </center>
@@ -40,7 +41,7 @@ body {
 <form method="post" action="SearchTimesheet.jsp">
 <center>
 				<br>
-			<button type="submit">Timesheet Status Report</button>
+			<button type="submit">Timesheet Status Report</button><br><br>
 
 
 </center>
@@ -49,7 +50,7 @@ body {
 <form method="post" action="UpdateServlet">
 <center>
 				<br>
-			<button type="submit">Edit My Profile</button>
+			<button type="submit">Edit My Profile</button><br><br>
 
 
 </center>
@@ -58,7 +59,7 @@ body {
 <form method="post" action="Loginpage.jsp">
 <center>
 				<br>
-			<button type="submit">Logout</button>
+			<button type="submit">Logout</button><br><br>
 
 
 </center>

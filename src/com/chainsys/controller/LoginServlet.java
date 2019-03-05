@@ -42,25 +42,27 @@ public class LoginServlet extends HttpServlet {
 		chainsys.setUsername(request.getParameter("username"));
 		chainsys.setPassword(request.getParameter("password"));
 		chainsys.setUsername2(request.getParameter("username"));
-		
-	
-		
-		
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
+		
+		
+		
 		try {
 			if(chainsysDAO.login(chainsys)){
+				
+				chainsysDAO.get(chainsys);
+				String ename=chainsys.getEmpname();
+				request.setAttribute("Name", ename);
 				RequestDispatcher rd=request.getRequestDispatcher("Welcome.jsp");
 				rd.forward(request, response);
+				
 			}
 			else
 			{
 				RequestDispatcher rd=request.getRequestDispatcher("incorrectpassword.jsp");
 				rd.forward(request, response);
 			}
-			chainsysDAO.get(chainsys);
 			
 			
-			chainsysDAO.getEmpID(chainsys);
 			
 			
 		} catch (SQLException e) {
