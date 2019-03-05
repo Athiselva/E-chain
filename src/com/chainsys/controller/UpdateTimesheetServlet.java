@@ -13,30 +13,27 @@ import javax.servlet.http.HttpServletResponse;
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
 
-
 @WebServlet("/UpdateTimesheetServlet")
 public class UpdateTimesheetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-    public UpdateTimesheetServlet() {
-        super();
-       
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public UpdateTimesheetServlet() {
+		super();
+
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		String status=request.getParameter("timesheet");
-		int number=Integer.parseInt(request.getParameter("tsnumber"));
-		chainsys.setTaskStatus(status);
-		chainsys.setTimesheetNumber(number);
+		chainsys.setTimesheetNumber(Integer.parseInt(request
+				.getParameter("tsnumber")));
+		chainsys.setTaskStatus(request.getParameter("timesheet"));
 		try {
 			chainsysDAO.timeSheets(chainsys);
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTimesheetServlet");

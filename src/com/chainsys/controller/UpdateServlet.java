@@ -16,35 +16,34 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
 
-
 @WebServlet("/UpdateServlet")
 public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public UpdateServlet() {
-        super();
-       
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	public UpdateServlet() {
+		super();
+
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		ArrayList<Chainsys> ulist=new ArrayList<>();		
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		ArrayList<Chainsys> ulist = new ArrayList<>();
 		try {
 			ChainsysDAO chainsysDAO = new ChainsysDAO();
 			Chainsys chainsys = new Chainsys();
-			ulist=chainsysDAO.viewProfile(chainsys);
+			ulist = chainsysDAO.viewProfile(chainsys);
 			request.setAttribute("PROFILE", ulist);
-			request.setAttribute("ID" , chainsys.getId());
-			RequestDispatcher rd = request.getRequestDispatcher("UpdateProfile.jsp");
+			request.setAttribute("ID", chainsys.getId());
+			RequestDispatcher rd = request
+					.getRequestDispatcher("UpdateProfile.jsp");
 			rd.include(request, response);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
