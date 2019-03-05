@@ -20,6 +20,7 @@ body {
 <body>
 <center>
 <form method="post" action="AttendanceServlet">
+
 <br><br><br><br>
 <h1>Attendance Report</h1>
 <br>

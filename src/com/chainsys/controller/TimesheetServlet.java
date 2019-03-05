@@ -47,6 +47,9 @@ public class TimesheetServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		String email=chainsys.getEmail2();
+		request.setAttribute("email", email);
 		request.setAttribute("Name", ename);
 		request.setAttribute("ID", eid);
 		request.setAttribute("TIMESHEET", tlist);

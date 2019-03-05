@@ -47,6 +47,8 @@ public class SingleTimesheetServlet extends HttpServlet {
 		}
 
 		request.setAttribute("TIMESHEET", tlist);
+		String email=chainsys.getEmail2();
+		request.setAttribute("email", email);
 		RequestDispatcher rd = request.getRequestDispatcher("EnterTimesheet.jsp");
 		rd.include(request, response);
 	}

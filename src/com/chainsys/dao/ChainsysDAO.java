@@ -83,31 +83,16 @@ public class ChainsysDAO {
 
 	public void get(Chainsys chainsys) throws SQLException {
 		Connection connection = ConnectionUtil.getConnection();
-		String sql2 = "select employee_id,employee_name from chainsys where username=?";
+		String sql2 = "select employee_id,employee_name,email from chainsys where username=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql2);
 		preparedStatement.setString(1, chainsys.getUsername2());
 		ResultSet resultSet = preparedStatement.executeQuery();
 		while (resultSet.next()) {
 			Chainsys.setId(resultSet.getInt("employee_id"));
 			Chainsys.setEmpname(resultSet.getString("employee_name"));
+			Chainsys.setEmail2(resultSet.getString("email"));
 		}
 		ConnectionUtil.close(connection, preparedStatement, resultSet);
-	}
-
-	public void getEmpID(Chainsys chainsys) throws SQLException {
-		Connection connection = ConnectionUtil.getConnection();
-		String sql2 = "select employee_id,employee_name from chainsys where username=?";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql2);
-		preparedStatement.setString(1, chainsys.getUsername2());
-		ResultSet resultSet = preparedStatement.executeQuery();
-
-		while (resultSet.next()) {
-
-			chainsys.setId(resultSet.getInt("employee_id"));
-			Chainsys.setEmpname(resultSet.getString("employee_name"));
-		}
-		ConnectionUtil.close(connection, preparedStatement, resultSet);
-
 	}
 
 	public ArrayList<Chainsys> viewProfile(Chainsys chainsys)

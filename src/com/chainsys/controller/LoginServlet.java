@@ -52,6 +52,8 @@ public class LoginServlet extends HttpServlet {
 				chainsysDAO.get(chainsys);
 				String ename=chainsys.getEmpname();
 				request.setAttribute("Name", ename);
+				String email=chainsys.getEmail2();
+				request.setAttribute("email", email);
 				RequestDispatcher rd=request.getRequestDispatcher("Welcome.jsp");
 				rd.forward(request, response);
 				

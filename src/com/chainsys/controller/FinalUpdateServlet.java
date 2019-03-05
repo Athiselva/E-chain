@@ -48,6 +48,8 @@ public class FinalUpdateServlet extends HttpServlet {
 			ArrayList<Chainsys> ulist=new ArrayList<>();
 			ulist=chainsysDAO.viewProfile(chainsys);
 			request.setAttribute("PROFILE", ulist);
+			String email=chainsys.getEmail2();
+			request.setAttribute("email", email);
 			RequestDispatcher rd2 = request.getRequestDispatcher("UpdatedSuccessfully.jsp");
 			rd2.include(request, response);
 		} catch (SQLException e) {

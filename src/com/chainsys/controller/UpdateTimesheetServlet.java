@@ -36,6 +36,8 @@ public class UpdateTimesheetServlet extends HttpServlet {
 		chainsys.setTaskStatus(request.getParameter("timesheet"));
 		try {
 			chainsysDAO.timeSheets(chainsys);
+			String email=chainsys.getEmail2();
+			request.setAttribute("email", email);
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTimesheetServlet");
 			rd.include(request, response);
 		} catch (SQLException e) {

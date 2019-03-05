@@ -17,6 +17,7 @@ public class Chainsys {
 
 	public static int id;
 	public static String empname;
+	public static String email2;
 
 	private String update;
 	private String value;
@@ -30,6 +31,15 @@ public class Chainsys {
 	private LocalDate todate;
 	private LocalDate ondate;
 	public static LocalDate ondate2;
+
+	
+	public static String getEmail2() {
+		return email2;
+	}
+
+	public static void setEmail2(String email2) {
+		Chainsys.email2 = email2;
+	}
 
 	public LocalDate getDob() {
 		return dob;

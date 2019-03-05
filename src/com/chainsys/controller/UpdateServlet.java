@@ -38,6 +38,8 @@ public class UpdateServlet extends HttpServlet {
 			ChainsysDAO chainsysDAO = new ChainsysDAO();
 			Chainsys chainsys = new Chainsys();
 			ulist = chainsysDAO.viewProfile(chainsys);
+			String email=chainsys.getEmail2();
+			request.setAttribute("email", email);
 			request.setAttribute("PROFILE", ulist);
 			request.setAttribute("ID", chainsys.getId());
 			RequestDispatcher rd = request

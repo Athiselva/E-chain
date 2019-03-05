@@ -17,14 +17,65 @@ body {
 	width: 105%;
 }
 </style>
+<style>
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 23px;
+  padding: 8px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+</style>
 </head>
 <body>
-<br><br><br><br>
-<center><h2>Welcome ${Name }</h2><br></center>
-			<form method="post" action="SearchAttendance.jsp">
+<center> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				Logged in as ${email }</center>
+<br><br>
+<center><h1>Welcome ${Name }</h1><br></center>
+			<form method="post" action="SearchAttendance.jsp"><br>
+			
+		
 <center>
 			
-			<button type="submit">Attendance Report</button><br><br>
+			<button class="button button3" style="vertical-align:middle"><span>Attendance</span></button>
 
 
 </center>
@@ -32,7 +83,7 @@ body {
 <form method="post" action="EnterTimesheet.jsp">
 <center>
 				<br>
-			<button type="submit">Timesheets</button><br><br>
+			<button class="button button3" style="vertical-align:middle"><span>Timesheets</span></button>
 
 
 </center>
@@ -41,7 +92,7 @@ body {
 <form method="post" action="SearchTimesheet.jsp">
 <center>
 				<br>
-			<button type="submit">Timesheet Status Report</button><br><br>
+			<button class="button button3""  width: 300px; style="vertical-align:middle "><span>Timesheet Status Report</span></button>
 
 
 </center>
@@ -50,7 +101,7 @@ body {
 <form method="post" action="UpdateServlet">
 <center>
 				<br>
-			<button type="submit">Edit My Profile</button><br><br>
+			<button class="button button3"" style="vertical-align:middle"><span>Edit My Profile</span></button>
 
 
 </center>
@@ -59,7 +110,7 @@ body {
 <form method="post" action="Loginpage.jsp">
 <center>
 				<br>
-			<button type="submit">Logout</button><br><br>
+			<button class="button button3"" style="vertical-align:middle"><span>Logout</span></button>
 
 
 </center>

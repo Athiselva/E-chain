@@ -49,6 +49,8 @@ public class AttendanceServlet extends HttpServlet {
 			
 			alist=chainsysDAO.attendance(chainsys);
 			
+			String email=chainsys.getEmail2();
+			request.setAttribute("email", email);
 			request.setAttribute("Name", ename);
 			request.setAttribute("ID", eid);
 			request.setAttribute("ATTENDANCE", alist);
