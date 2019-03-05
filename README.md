@@ -10,7 +10,8 @@ a) Procedures to create tables in sql.
 <li> Before inserting the record check the employee_id in the chainsys table.
 <li> Insert a record with the help of employee_id from chainsys table.</li>
 <li> Create a attendance table.</li>
-<li> Insert a record with required date. </li>
+<li> Insert a record with required date. </li><br/>
+
 
 b) Modules
 
