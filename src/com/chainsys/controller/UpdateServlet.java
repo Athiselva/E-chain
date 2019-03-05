@@ -32,7 +32,7 @@ public class UpdateServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Chainsys chainsys2 = new Chainsys();
+		
 		
 		
 		ArrayList<Chainsys> ulist=new ArrayList<>();		

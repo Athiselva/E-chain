@@ -39,7 +39,7 @@ body {
 							<td> &nbsp;Employee Password : &nbsp; &nbsp; &nbsp; &nbsp; ${uplist.password}<br><br></td>
 							<td> &nbsp; &nbsp; &nbsp;Employee Phonenumber : &nbsp; &nbsp;  &nbsp; &nbsp;${uplist.phonenumber}<br><br><br></td></h2>
 							
-							<button type="submit" style="background-color:blue; color:black;">Goto Home</button>
+							<button type="submit" style="background-color:blue; color:black;">Home</button>
 							
 						</tr>
 
@@ -47,7 +47,6 @@ body {
 
 				</tbody>
 			
-		</center>
 		<br><br><br><a href="Loginpage.jsp">Logout</a></center>
 
 
