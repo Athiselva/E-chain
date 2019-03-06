@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registered Sucessessfull</title>
-
+<title>Reseted Successfully!</title>
 <style>
 .button {
   display: inline-block;
@@ -42,10 +41,11 @@ body {
 </style>
 </head>
 <body>
-<br><br><br><br><br><br><br>
-				<center>	<h3>Registered Successfull!</h3>
-<br>
-			<button class="button"><a href="Loginpage.jsp">Logout</a></button></center>
-
+			<form method="post" action="Loginpage.jsp">
+			
+			<br><br><br><br><br><br><br><br><br><br><center><h2>Password Reseted Successfully!</h2><br>
+			<button class="button">Login</button>
+			</center>
+			</form>
 </body>
 </html>

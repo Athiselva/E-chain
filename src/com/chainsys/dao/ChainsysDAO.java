@@ -17,21 +17,6 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 public class ChainsysDAO {
 
-	public void register(Chainsys chainsys) throws SQLException {
-		Connection connection = ConnectionUtil.getConnection();
-		String sql = "insert into chainsys (employee_id,employee_name,username,password,phone_number,position,email,date_of_birth) values(chainsys_employee_id_seq43.nextval,?,?,?,?,?,?,?)";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setString(1, chainsys.getName());
-		preparedStatement.setString(2, chainsys.getUsername());
-		preparedStatement.setString(3, chainsys.getPassword());
-		preparedStatement.setLong(4, chainsys.getPhonenumber());
-		preparedStatement.setString(5, chainsys.getPosition());
-		preparedStatement.setString(6, chainsys.getEmail());
-		preparedStatement.setDate(7, Date.valueOf(chainsys.getDob()));
-		preparedStatement.executeQuery();
-		ConnectionUtil.close(connection, preparedStatement, null);
-	}
-
 	public Boolean login(Chainsys chainsys) throws SQLException {
 		Connection connection = ConnectionUtil.getConnection();
 		String sql = "select username,password from chainsys where username=? and password=?";
@@ -53,6 +38,35 @@ public class ChainsysDAO {
 		ConnectionUtil.close(connection, preparedStatement, null);
 		return chainsys.isFlag();
 
+	}
+
+	public void get(Chainsys chainsys) throws SQLException {
+		Connection connection = ConnectionUtil.getConnection();
+		String sql2 = "select employee_id,employee_name,email from chainsys where username=?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql2);
+		preparedStatement.setString(1, chainsys.getUsername2());
+		ResultSet resultSet = preparedStatement.executeQuery();
+		while (resultSet.next()) {
+			Chainsys.setId(resultSet.getInt("employee_id"));
+			Chainsys.setEmpname(resultSet.getString("employee_name"));
+			Chainsys.setEmail2(resultSet.getString("email"));
+		}
+		ConnectionUtil.close(connection, preparedStatement, resultSet);
+	}
+
+	public void register(Chainsys chainsys) throws SQLException {
+		Connection connection = ConnectionUtil.getConnection();
+		String sql = "insert into chainsys (employee_id,employee_name,username,password,phone_number,position,email,date_of_birth) values(chainsys_employee_id_seq43.nextval,?,?,?,?,?,?,?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, chainsys.getName());
+		preparedStatement.setString(2, chainsys.getUsername());
+		preparedStatement.setString(3, chainsys.getPassword());
+		preparedStatement.setLong(4, chainsys.getPhonenumber());
+		preparedStatement.setString(5, chainsys.getPosition());
+		preparedStatement.setString(6, chainsys.getEmail());
+		preparedStatement.setDate(7, Date.valueOf(chainsys.getDob()));
+		preparedStatement.executeQuery();
+		ConnectionUtil.close(connection, preparedStatement, null);
 	}
 
 	public ArrayList<Chainsys> attendance(Chainsys chainsys)
@@ -79,60 +93,6 @@ public class ChainsysDAO {
 		}
 		ConnectionUtil.close(connection, preparedStatement, resultSet);
 		return clist;
-	}
-
-	public void get(Chainsys chainsys) throws SQLException {
-		Connection connection = ConnectionUtil.getConnection();
-		String sql2 = "select employee_id,employee_name,email from chainsys where username=?";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql2);
-		preparedStatement.setString(1, chainsys.getUsername2());
-		ResultSet resultSet = preparedStatement.executeQuery();
-		while (resultSet.next()) {
-			Chainsys.setId(resultSet.getInt("employee_id"));
-			Chainsys.setEmpname(resultSet.getString("employee_name"));
-			Chainsys.setEmail2(resultSet.getString("email"));
-		}
-		ConnectionUtil.close(connection, preparedStatement, resultSet);
-	}
-
-	public ArrayList<Chainsys> viewProfile(Chainsys chainsys)
-			throws SQLException {
-		Connection connection = ConnectionUtil.getConnection();
-		String sql = "select employee_name,position,username,password,phone_number,email from chainsys where employee_id=?";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setInt(1, chainsys.getId());
-
-		ResultSet resultSet = preparedStatement.executeQuery();
-		ArrayList<Chainsys> clist = new ArrayList<>();
-		while (resultSet.next()) {
-			Chainsys chainsys2 = new Chainsys();
-
-			chainsys2.setName(resultSet.getString("employee_name"));
-			chainsys2.setEmployeeId(chainsys.getId());
-			chainsys2.setPosition(resultSet.getString("position"));
-			chainsys2.setUsername(resultSet.getString("username"));
-			chainsys2.setPassword(resultSet.getString("password"));
-			chainsys2.setPhonenumber(resultSet.getLong("phone_number"));
-			chainsys2.setEmail(resultSet.getString("email"));
-
-			clist.add(chainsys2);
-		}
-		ConnectionUtil.close(connection, preparedStatement, resultSet);
-		return clist;
-	}
-
-	public void updateProfile(Chainsys chainsys) throws SQLException {
-		Connection connection = ConnectionUtil.getConnection();
-		String sql = "update chainsys set employee_name=?,username=?,password=?,phone_number=? where employee_id=?";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setString(1, chainsys.getName());
-		preparedStatement.setString(2, chainsys.getUsername());
-		preparedStatement.setString(3, chainsys.getPassword());
-		preparedStatement.setLong(4, chainsys.getPhonenumber());
-		preparedStatement.setInt(5, chainsys.getId());
-		preparedStatement.executeQuery();
-		ConnectionUtil.close(connection, preparedStatement, null);
-
 	}
 
 	public ArrayList<Chainsys> viewTimeSheet(Chainsys chainsys)
@@ -193,6 +153,61 @@ public class ChainsysDAO {
 		}
 		ConnectionUtil.close(connection, preparedStatement, resultSet);
 		return clist;
+	}
+
+	public ArrayList<Chainsys> viewProfile(Chainsys chainsys)
+			throws SQLException {
+		Connection connection = ConnectionUtil.getConnection();
+		String sql = "select employee_name,position,username,password,phone_number,email from chainsys where employee_id=?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, chainsys.getId());
+
+		ResultSet resultSet = preparedStatement.executeQuery();
+		ArrayList<Chainsys> clist = new ArrayList<>();
+		while (resultSet.next()) {
+			Chainsys chainsys2 = new Chainsys();
+
+			chainsys2.setName(resultSet.getString("employee_name"));
+			chainsys2.setEmployeeId(chainsys.getId());
+			chainsys2.setPosition(resultSet.getString("position"));
+			chainsys2.setUsername(resultSet.getString("username"));
+			chainsys2.setPassword(resultSet.getString("password"));
+			chainsys2.setPhonenumber(resultSet.getLong("phone_number"));
+			chainsys2.setEmail(resultSet.getString("email"));
+
+			clist.add(chainsys2);
+		}
+		ConnectionUtil.close(connection, preparedStatement, resultSet);
+		return clist;
+	}
+
+	public void updateProfile(Chainsys chainsys) throws SQLException {
+		Connection connection = ConnectionUtil.getConnection();
+		String sql = "update chainsys set employee_name=?,username=?,password=?,phone_number=? where employee_id=?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, chainsys.getName());
+		preparedStatement.setString(2, chainsys.getUsername());
+		preparedStatement.setString(3, chainsys.getPassword());
+		preparedStatement.setLong(4, chainsys.getPhonenumber());
+		preparedStatement.setInt(5, chainsys.getId());
+		preparedStatement.executeQuery();
+		ConnectionUtil.close(connection, preparedStatement, null);
+
+	}
+
+	public void forgetPassword(Chainsys chainsys) throws SQLException {
+		Connection connection = ConnectionUtil.getConnection();
+		String sql = "update chainsys set password=? where employee_id=? and employee_name=? and position=? and username=? and phone_number=? and email=?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setString(1, chainsys.getPassword());
+		preparedStatement.setInt(2, chainsys.getEmployeeId());
+		preparedStatement.setString(3, chainsys.getName());
+		preparedStatement.setString(4, chainsys.getPosition());
+		preparedStatement.setString(5, chainsys.getUsername());
+		preparedStatement.setLong(6, chainsys.getPhonenumber());
+		preparedStatement.setString(7, chainsys.getEmail());
+		preparedStatement.executeQuery();
+		ConnectionUtil.close(connection, preparedStatement, null);
 	}
 
 }

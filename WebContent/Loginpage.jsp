@@ -79,6 +79,13 @@ body {
   color: black;
 }
 
+.button5 {
+  color: black;
+}
+.button6 {
+  color: blue;
+}
+
 .color-red {
     color: #F00;
 }
@@ -101,13 +108,16 @@ body {
 			autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Enter Password" required>
-		<div>
+		<div><br>
+		
+		<a href="ForgetPassword.jsp" class="button6" >Forget Password</a>
 
 		</div><br>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br>
 		<span>
 			
 		</span>
+		
 		<a href="signup.jsp" class="button5" >Create an account</a>
 
 	</form>

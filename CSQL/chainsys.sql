@@ -145,5 +145,7 @@ values('28-02-19',2000,'Athiselvam','Present',8,'--','--');
 COMMIT;
 
 
+select * from chainsys;
+
 
 

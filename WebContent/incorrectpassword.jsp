@@ -78,6 +78,9 @@ body {
 		.button5 {
   color: black;
 }
+.button6 {
+  color: blue;
+}
 
 .color-red {
     color: #F00;
@@ -102,9 +105,9 @@ body {
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Enter Password" required>
 		<div>
-<br><font color="red">Username or Password is invalid!</font>
+<br><font color="red">Username or Password is invalid!</font> <br> <a href="ForgetPassword.jsp" class="button6" >Forget Password</a>
 		</div><br>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button><br>
 		<span>
 			
 		</span>
