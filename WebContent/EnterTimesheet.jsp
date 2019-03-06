@@ -9,6 +9,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Timesheets</title>
 <style>
+.button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #008CBA;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+<style>
 body {
 	background-image: url('log.jpg');
 	background-size: 100%;
@@ -29,7 +53,7 @@ body {
  <h3>Timesheet Report</h3>
   <input type="date" name="ondate" style="width: 250px;"
        min="2018-02-22" max="2019-08-02"><br><br>
-        <button type="submit">Search</button>
+        <button class="button">Search</button>
   
  
  </center>
@@ -78,7 +102,7 @@ body {
 <br><br><br>
 Timesheet Number &nbsp; <input type="text" name="tsnumber"> &nbsp;&nbsp;&nbsp;&nbsp;
 Timesheet Status &nbsp; <input type="text" name="timesheet"><br><br><br><br>
-<button type="submit">Submit</button>
+<button class="button">Submit</button>
 </center>
 </form>
 

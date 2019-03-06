@@ -12,7 +12,7 @@
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 16px 32px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 .button3 {
-  background-color: white; 
+  background-color: grey; 
   color: black; 
   border: 2px solid #f44336;
 }
@@ -32,7 +32,9 @@
   background-color: #f44336;
   color: white;
 }
+</style>
 
+<style>
 body {
 	background-image: url('log.jpg');
 	background-size: 100%;
@@ -91,12 +93,15 @@ body {
 				</tbody>
 			</table>
 			
-			<br><br><br><a href="Loginpage.jsp">Logout</a></center>
+			<br><br><br>
+		<button class="button button3"  ><a href="Loginpage.jsp">Logout</a></button>
 		
+		</center>
 
 	</div>
 
 
+		
 
 </body>
 </html>

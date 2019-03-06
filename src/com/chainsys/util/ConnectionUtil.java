@@ -20,9 +20,11 @@ public class ConnectionUtil {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException("Unable to get the Connection");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException("Unable to get the Connection");
 		}
 	
 	

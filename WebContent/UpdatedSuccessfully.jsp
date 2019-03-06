@@ -8,6 +8,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Updated Successfully</title>
 <style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button3 {
+  background-color: grey; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+</style>
+<style>
 body {
 	background-image: url('log.jpg');
 	background-size: 100%;
@@ -43,7 +69,9 @@ body {
 							<td> &nbsp;Employee Password : &nbsp; &nbsp; &nbsp; &nbsp; ${uplist.password}<br><br></td>
 							<td> &nbsp; &nbsp; &nbsp;Employee Phonenumber : &nbsp; &nbsp;  &nbsp; &nbsp;${uplist.phonenumber}<br><br><br></td></h2>
 							
-							<button type="submit" style="background-color:blue; color:black;">Home</button>
+							
+							<button class="button button3"  >Home</button>
+							
 							
 						</tr>
 
@@ -51,9 +79,10 @@ body {
 
 				</tbody>
 			
-		<br><br><br><a href="Loginpage.jsp">Logout</a></center>
+		
+		
 
-
+</center>
 		
 </form>
 </body>
