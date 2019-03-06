@@ -1,5 +1,5 @@
-create table chainsys(employe_id number(20),employee_name varchar2(40),position varchar2(30),username varchar2(30),
-password varchar2(30),phone_number varchar2(30),email varchar2(30),date_of_birth date);
+create table chainsys(employee_id number(20) primary key,employee_name varchar2(40),position varchar2(30),username varchar2(30) unique,
+password varchar2(30),phone_number varchar2(30) unique,email varchar2(30) unique,date_of_birth date);
 
 create sequence chainsys_emp_id_seq43 start with 2000 increment by 1;
 
@@ -88,59 +88,59 @@ SELECT * FROM TIMESHEET;
 
 create table attendance(
 ondate date,Employee_id number(30),Employee_Name varchar(30),Present_hours number,Status varchar(30),Reason varchar(30),Approval varchar(30),
-CONSTRAINT fk_atd_empi FOREIGN KEY(employee_id) REFERENCES chainsys(employee_id))
+CONSTRAINT fk_atd_empi FOREIGN KEY(employee_id) REFERENCES chainsys(employee_id));
 
 
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('01-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('01-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('02-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('02-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('04-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('04-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('05-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('05-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('06-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('06-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('07-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('07-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('08-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('08-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('09-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('09-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('11-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('11-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('12-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('12-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('13-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('13-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('14-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('14-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('15-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('15-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('16-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('16-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('18-02-19',2009,'Athiselvam','Leave',8,'Sick','Approved');
+values('18-02-19',2000,'Athiselvam','Leave',8,'Sick','Approved');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('19-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('19-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('20-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('20-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('21-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('21-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('22-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('22-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('23-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('23-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('26-02-19',2009,'Athiselvam','Leave',0,'Sick','Approved');
+values('26-02-19',2000,'Athiselvam','Leave',0,'Sick','Approved');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('25-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('25-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('26-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('26-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('27-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('27-02-19',2000,'Athiselvam','Present',8,'--','--');
 insert into attendance (ondate,employee_id,employee_name,status,present_hours,reason,approval)
-values('28-02-19',2009,'Athiselvam','Present',8,'--','--');
+values('28-02-19',2000,'Athiselvam','Present',8,'--','--');
 
 COMMIT;
 
