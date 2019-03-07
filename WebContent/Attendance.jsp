@@ -50,6 +50,7 @@ body {
 </head>
 <body>
 
+
 	<div class="container">
 	<center> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -92,16 +93,21 @@ body {
 
 				</tbody>
 			</table>
-			
+			</div>
 			<br><br><br>
-		<button class="button button3"  ><a href="Loginpage.jsp">Logout</a></button>
-		
-		</center>
+			<center>
+			<form method="post" action="WelcomeServlet">
+			<button class="button button3"  >Home</button>
+			
+			</form><br><br>
+			
+			<form method="post" action="InvalidateServlet">
+		<button class="button button3"  >Logout</button>
+			</center> </form>	
 
-	</div>
+			
 
-
-		
+	
 
 </body>
 </html>

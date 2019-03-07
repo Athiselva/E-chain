@@ -84,11 +84,18 @@ body {
   
   
 	<br><br><br>
+	</form>
 		
-		<button class="button button3"  ><a href="Loginpage.jsp">Logout</a></button>
+		<form method="post" action="WelcomeServlet">
+			<button class="button button3"  >Home</button>
+			</form><br><br>
+		
+		<form method="post" action="InvalidateServlet">
+		<button class="button button3"  >Logout</button>
+ 		</form>
  
  </center>
-</form>
+
 
 </body>
 </html>

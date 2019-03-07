@@ -9,6 +9,56 @@
 <title>Updated Successfully</title>
 <style>
 .button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #008CBA;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button3 {
+  background-color: grey; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+</style>
+<style>
+.button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -43,42 +93,67 @@ body {
 	width: 105%;
 }
 </style>
+<style>
+table, th, td {
+  border: 2px solid black;
+}
+</style>
 </head>
 <body>
-<form method="post" action="Welcome.jsp">
+<form method="post" action="WelcomeServlet">
 <center> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Logged in as ${email }</center>
-<center>
 			
-				<tbody>
 
 <br><br>
 		<br><br>
 		<br>
-		<center><h1>Updated Sucessfully!</h1></center>
+		<center><h1>Updated Sucessfully!</h1>
 
 					<c:forEach var="uplist" items="${PROFILE}">
-
-						<tr>
+							
+		<h2>					
+							
+	<table>
+  <tr>
+    <th>Employee Id  :</th>
+    <td>${uplist.employeeId}</td>
+  </tr>
+   <tr>
+    <th>Employee Name       :</th>
+    <td> ${uplist.name}</td>
+  </tr>
+   <tr>
+    <th>Username </th>
+    <td> ${uplist.username}</td>
+  </tr>
+   <tr>
+    <th> Password </th>
+    <td> ${uplist.password}</td>
+  </tr>
+   <tr>
+    <th> Phonenumber</th>
+    <td> ${uplist.phonenumber}</td>
+  </tr>
+ 
+  </h2>
+ 
+   </table>
+							
 							<br><br><br>
-							<h2><td> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Employee Id  :   &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;${uplist.employeeId}<br><br></td>
-							<td> &nbsp; &nbsp; &nbsp;Employee Name       :   &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ${uplist.name}<br><br></td>
-							<td>Employee Username :  &nbsp; &nbsp; &nbsp; &nbsp;${uplist.username}<br><br></td>
-							<td> &nbsp;Employee Password : &nbsp; &nbsp; &nbsp; &nbsp; ${uplist.password}<br><br></td>
-							<td> &nbsp; &nbsp; &nbsp;Employee Phonenumber : &nbsp; &nbsp;  &nbsp; &nbsp;${uplist.phonenumber}<br><br><br></td></h2>
 							
 							
-							<button class="button button3"  >Home</button>
 							
+							<button class="button button3"  >Home</button><br><br><br>
 							
-						</tr>
 
 					</c:forEach>
-
-				</tbody>
-			
+				</form>
+			<form method="post" action="InvalidateServlet">
+		<button class="button button3"  >Logout</button>
+ 		</form>
 		
 		
 

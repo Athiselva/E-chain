@@ -87,10 +87,16 @@ body {
 					</c:forEach>
 
 				</tbody>
-			</table>
-			<br><br><br><button class="button button3"  ><a href="Loginpage.jsp">Logout</a>
+			</table><br><br><br>
+			</form>
+			<form method="post" action="WelcomeServlet">
+			<button class="button button3"  >Home</button>
+			</form><br><br>
+		<form method="post" action="InvalidateServlet">
+		<button class="button button3"  >Logout</button>
+ 		</form>
 		</center>
 	</div>
-	</form>
+	
 </body>
 </html>

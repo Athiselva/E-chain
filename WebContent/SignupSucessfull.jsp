@@ -45,7 +45,7 @@ body {
 <br><br><br><br><br><br><br>
 				<center>	<h3>Registered Successfull!</h3>
 <br>
-			<button class="button"><a href="Loginpage.jsp">Logout</a></button></center>
+			<button class="button"><a href="Loginpage.jsp">Login</a></button></center>
 
 </body>
 </html>

@@ -107,7 +107,7 @@ body {
 </center>
 </form>
 </body>
-<form method="post" action="Loginpage.jsp">
+<form method="post" action="InvalidateServlet">
 <center>
 				<br>
 			<button class="button button3"" style="vertical-align:middle"><span>Logout</span></button>
