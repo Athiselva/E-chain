@@ -2,7 +2,6 @@ package com.chainsys.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -44,11 +43,16 @@ public class FinalUpdateServlet extends HttpServlet {
 		chainsys.setPassword(request.getParameter("password"));
 		chainsys.setPhonenumber(Long.parseLong(request.getParameter("phonenumber")));
 		try {
+			HttpSession session=request.getSession();
+			int id=(int)session.getAttribute("id");
+			//String name=(String)session.getAttribute("name");
+			String email=(String)session.getAttribute("email");
+			chainsys.setEmployeeId(id);
 			chainsysDAO.updateProfile(chainsys);
 			ArrayList<Chainsys> ulist=new ArrayList<>();
+			chainsys.setEmployeeId(id);
 			ulist=chainsysDAO.viewProfile(chainsys);
 			request.setAttribute("PROFILE", ulist);
-			String email=chainsys.getEmail2();
 			request.setAttribute("email", email);
 			RequestDispatcher rd2 = request.getRequestDispatcher("UpdatedSuccessfully.jsp");
 			rd2.include(request, response);

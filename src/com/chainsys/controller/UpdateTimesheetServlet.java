@@ -2,6 +2,7 @@ package com.chainsys.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
@@ -31,12 +33,20 @@ public class UpdateTimesheetServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		chainsys.setTimesheetNumber(Integer.parseInt(request
-				.getParameter("tsnumber")));
-		chainsys.setTaskStatus(request.getParameter("timesheet"));
+		
+		
+		HttpSession session=request.getSession();
+		int id=(int)session.getAttribute("id");
+		//String name=(String)session.getAttribute("name");
+		String email=(String)session.getAttribute("email");
+		LocalDate ondate=(LocalDate)session.getAttribute("ondate");
 		try {
+			
+			chainsys.setTimesheetNumber(Integer.parseInt(request.getParameter("tsnumber")));
+			chainsys.setTaskStatus(request.getParameter("timesheet"));
+			chainsys.setEmployeeId(id);
+			chainsys.setOndate(ondate);
 			chainsysDAO.timeSheets(chainsys);
-			String email=chainsys.getEmail2();
 			request.setAttribute("email", email);
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTimesheetServlet");
 			rd.include(request, response);

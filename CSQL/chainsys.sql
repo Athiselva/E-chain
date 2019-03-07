@@ -146,6 +146,7 @@ COMMIT;
 
 
 select * from chainsys;
+delete chainsys where employee_id=2026;
 
 
 

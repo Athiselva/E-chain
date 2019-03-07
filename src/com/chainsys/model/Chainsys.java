@@ -1,6 +1,5 @@
 package com.chainsys.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class Chainsys {
@@ -15,10 +14,6 @@ public class Chainsys {
 	private String position;
 	private LocalDate dob;
 
-	public static int id;
-	public static String empname;
-	public static String email2;
-
 	private String update;
 	private String value;
 	private int timesheetNumber;
@@ -30,15 +25,13 @@ public class Chainsys {
 	private LocalDate fromDate;
 	private LocalDate todate;
 	private LocalDate ondate;
-	public static LocalDate ondate2;
 
-	
-	public static String getEmail2() {
-		return email2;
+	public int getEmployeeId() {
+		return employeeId;
 	}
 
-	public static void setEmail2(String email2) {
-		Chainsys.email2 = email2;
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public LocalDate getDob() {
@@ -55,14 +48,6 @@ public class Chainsys {
 
 	public void setTimesheetNumber(int timesheetNumber) {
 		this.timesheetNumber = timesheetNumber;
-	}
-
-	public static LocalDate getOndate2() {
-		return ondate2;
-	}
-
-	public static void setOndate2(LocalDate ondate2) {
-		Chainsys.ondate2 = ondate2;
 	}
 
 	private String task;
@@ -91,14 +76,6 @@ public class Chainsys {
 
 	public void setTimeSheetStatus(String timeSheetStatus) {
 		this.timeSheetStatus = timeSheetStatus;
-	}
-
-	public static String getEmpname() {
-		return empname;
-	}
-
-	public static void setEmpname(String empname) {
-		Chainsys.empname = empname;
 	}
 
 	public LocalDate getFromDate() {
@@ -181,16 +158,6 @@ public class Chainsys {
 		this.value = value;
 	}
 
-	public static String username2;
-
-	public static int getId() {
-		return id;
-	}
-
-	public static void setId(int id) {
-		Chainsys.id = id;
-	}
-
 	public String getUpdate() {
 		return update;
 	}
@@ -207,28 +174,12 @@ public class Chainsys {
 		this.reason = reason;
 	}
 
-	public String getUsername2() {
-		return username2;
-	}
-
-	public static void setUsername2(String username2) {
-		Chainsys.username2 = username2;
-	}
-
 	public boolean isFlag() {
 		return flag;
 	}
 
 	public void setFlag(boolean flag) {
 		this.flag = flag;
-	}
-
-	public int getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
 	}
 
 	public String getName() {

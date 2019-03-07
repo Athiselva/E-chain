@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
@@ -40,19 +41,21 @@ public class AttendanceServlet extends HttpServlet {
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
 		LocalDate from=LocalDate.parse(request.getParameter("from"));
 		LocalDate to=LocalDate.parse(request.getParameter("to"));
-		chainsys.setFromDate(from);
-		chainsys.setTodate(to);
+	
 		try {
 			ArrayList<Chainsys> alist=new ArrayList<>();
-			int eid=chainsys.getId();
-			String ename=chainsys.getEmpname();
 			
+			HttpSession session=request.getSession();
+			int id=(int)session.getAttribute("id");
+			String name=(String)session.getAttribute("name");
+			String email=(String)session.getAttribute("email");
+			chainsys.setFromDate(from);
+			chainsys.setTodate(to);
+			chainsys.setEmployeeId(id);
 			alist=chainsysDAO.attendance(chainsys);
-			
-			String email=chainsys.getEmail2();
 			request.setAttribute("email", email);
-			request.setAttribute("Name", ename);
-			request.setAttribute("ID", eid);
+			request.setAttribute("Name", name);
+			request.setAttribute("ID", id);
 			request.setAttribute("ATTENDANCE", alist);
 		RequestDispatcher rd = request.getRequestDispatcher("Attendance.jsp");
 		rd.include(request, response);

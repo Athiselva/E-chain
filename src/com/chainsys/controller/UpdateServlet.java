@@ -1,7 +1,6 @@
 package com.chainsys.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -32,16 +31,21 @@ public class UpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session=request.getSession();
+		int id=(int)session.getAttribute("id");
+		//String name=(String)session.getAttribute("name");
+		String email=(String)session.getAttribute("email");
 
 		ArrayList<Chainsys> ulist = new ArrayList<>();
 		try {
 			ChainsysDAO chainsysDAO = new ChainsysDAO();
 			Chainsys chainsys = new Chainsys();
+			chainsys.setEmployeeId(id);
 			ulist = chainsysDAO.viewProfile(chainsys);
-			String email=chainsys.getEmail2();
 			request.setAttribute("email", email);
 			request.setAttribute("PROFILE", ulist);
-			request.setAttribute("ID", chainsys.getId());
+			request.setAttribute("ID", id);
 			RequestDispatcher rd = request
 					.getRequestDispatcher("UpdateProfile.jsp");
 			rd.include(request, response);

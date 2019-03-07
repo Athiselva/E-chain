@@ -2,6 +2,7 @@ package com.chainsys.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
@@ -35,6 +37,13 @@ public class ResultTimesheetServlet extends HttpServlet {
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
 		ArrayList<Chainsys> tlist = new ArrayList<>();
 		try {
+			HttpSession session=request.getSession();
+			int id=(int)session.getAttribute("id");
+			//String name=(String)session.getAttribute("name");
+			//String email=(String)session.getAttribute("email");
+			LocalDate ondate=(LocalDate)session.getAttribute("ondate");
+			chainsys.setEmployeeId(id);
+			chainsys.setOndate(ondate);
 			tlist = chainsysDAO.ondateTimeSheet(chainsys);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
@@ -36,19 +37,24 @@ public class SingleTimesheetServlet extends HttpServlet {
 		LocalDate ondate = LocalDate.parse(request.getParameter("ondate"));
 
 		chainsys.setOndate(ondate);
-		chainsys.setOndate2(ondate);
+		HttpSession session = request.getSession();
+		session.setAttribute("ondate",ondate);
 
 		ArrayList<Chainsys> tlist = new ArrayList<>();
 		try {
+			int id=(int)session.getAttribute("id");
+			//String name=(String)session.getAttribute("name");
+			chainsys.setEmployeeId(id);
+			String email=(String)session.getAttribute("email");
 			tlist = chainsysDAO.ondateTimeSheet(chainsys);
+			request.setAttribute("TIMESHEET", tlist);
+			request.setAttribute("email", email);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		request.setAttribute("TIMESHEET", tlist);
-		String email=chainsys.getEmail2();
-		request.setAttribute("email", email);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("EnterTimesheet.jsp");
 		rd.include(request, response);
 	}
