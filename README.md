@@ -17,6 +17,7 @@ b) Modules
 
 <li> Employee Registeration.</li>
 <li> Employee Login.</li>
+<li> Resetting Password.</li>
 <li> Attendance Report using from and to date.</li>
 <li> Adding Timesheet Task status.</li>
 <li> Timesheet Report(whether approved or not).</li>
