@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Login</title>
+	<title>Admin Login</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 	<style>
 body {
@@ -85,9 +85,6 @@ body {
 .button6 {
   color: blue;
 }
-.button7 {
-  color: red;
-}
 
 .color-red {
     color: #F00;
@@ -98,12 +95,7 @@ body {
 <body class="text-center">
 	<form method="post" action="LoginServlet" class="form-signin">
 	
-		<h3><b><font color="black">CHAIN -</font></b>
-		<b><font color="red">SYS</font></b></h3>
-		Powered by <b><font color="black">e.</font> <font color="red">chain</font></b><br><br><br>
-		
-		
-		
+		<h3><b><font color="red">ADMIN</font></b>
 
 		<h3 class="h3 mb-3 font-weight-normal">Sign In</h3>
 		
@@ -113,22 +105,14 @@ body {
 		<input type="text" id="inputEmail" name="username" title="*6-20 Characters,*A-Z,*a-z & Special characters only allowed" class="form-control" placeholder="Enter Username" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}"  required
 			autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" id="inputPassword" title="*8-20 Characters,*A-Z,*a-z & Special characters only allowed" name="password" class="form-control" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" required>
+		<input type="password" id="inputPassword" name="password" title="*8-20 Characters,*A-Z,*a-z & Special characters only allowed" class="form-control" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" required>
 		<div><br>
-		
-		<a href="ForgetPassword.jsp" class="button6" >Forget Password</a>
 
 		</div><br>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br>
-		<span>
-			
-		</span>
 		
-		<a href="signup.jsp" class="button5" >Create an account</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			
-<a href="AdminLogin.jsp" class="button7" >Admin Login</a>
+
 	</form>
-	
 </body>
 
 </html>

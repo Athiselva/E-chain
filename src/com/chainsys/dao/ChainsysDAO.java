@@ -77,7 +77,7 @@ public class ChainsysDAO {
 
 	public void register(Chainsys chainsys) throws SQLException {
 		Connection connection = ConnectionUtil.getConnection();
-		String sql = "insert into chainsys (employee_id,employee_name,username,password,phone_number,position,email,date_of_birth) values(chainsys_employee_id_seq43.nextval,?,?,?,?,?,?,?)";
+		String sql = "insert into chainsys (employee_id,employee_name,username,password,phone_number,position,email,date_of_birth) values(chainsys_emp_id_seq43.nextval,?,?,?,?,?,?,?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, chainsys.getName());
 		preparedStatement.setString(2, chainsys.getUsername());
@@ -220,19 +220,18 @@ public class ChainsysDAO {
 
 	}
 
-	public void forgetPassword(Chainsys chainsys) throws SQLException {
+	public int forgetPassword(Chainsys chainsys) throws SQLException {
 		Connection connection = ConnectionUtil.getConnection();
-		String sql = "update chainsys set password=? where employee_id=? and employee_name=? and position=? and username=? and phone_number=? and email=?";
+		String sql = "update chainsys set password=? where employee_id=? and username=? and phone_number=? and email=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, chainsys.getPassword());
 		preparedStatement.setInt(2, chainsys.getEmployeeId());
-		preparedStatement.setString(3, chainsys.getName());
-		preparedStatement.setString(4, chainsys.getPosition());
-		preparedStatement.setString(5, chainsys.getUsername());
-		preparedStatement.setLong(6, chainsys.getPhonenumber());
-		preparedStatement.setString(7, chainsys.getEmail());
-		preparedStatement.executeQuery();
+		preparedStatement.setString(3, chainsys.getUsername());
+		preparedStatement.setLong(4, chainsys.getPhonenumber());
+		preparedStatement.setString(5, chainsys.getEmail());
+		int rows=preparedStatement.executeUpdate();
 		ConnectionUtil.close(connection, preparedStatement, null);
+		return rows;
 	}
 
 }

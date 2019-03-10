@@ -78,22 +78,22 @@ body {
 <br><br>
 		<br><br>
 		<br>
-		<center><h2>Sign In</h2></center>
+		<center><h2>Update Profile</h2></center>
 
 					<c:forEach var="uplist" items="${PROFILE}">
 
 						<tr>
 							<br><br><br>
 							<td>Employee Id : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="text" name="id" value="${uplist.employeeId}" style="background-color:lightblue; color:Blue;"><br><br></td>
+							<input type="text" title="Only 4 Numerical value is allowed" pattern="[0-9]{4}" name="id" value="${uplist.employeeId}" style="background-color:lightblue; color:Blue;"><br><br></td>
 							<td>Employee Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="text" name="name" value="${uplist.name}"style="background-color:lightblue; color:Blue;"><br><br></td>
+							<input type="text"  title="4-20 Characters,A-z,a-z is only allowed" pattern="[a-zA-Z\s]{4,20}" name="name" value="${uplist.name}"style="background-color:lightblue; color:Blue;"><br><br></td>
 							<td>Employee Username : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="text" name="username" value="${uplist.username}" style="background-color:lightblue; color:Blue;"><br><br></td>
+							<input type="text"  title="*6-15 Characters,*A-Z,*a-z & Special characters only allowed" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}" name="username" value="${uplist.username}" style="background-color:lightblue; color:Blue;"><br><br></td>
 							<td>Employee Password : &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="text" name="password" value="${uplist.password}" style="background-color:lightblue; color:Blue;"><br><br></td>
+							<input type="text" title="*8-20 Characters,*A-Z,*a-z & Special characters only allowed" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" name="password" value="${uplist.password}" style="background-color:lightblue; color:Blue;"><br><br></td>
 							<td>Employee Phonenumber :
-							<input type="text" name="phonenumber" value="${uplist.phonenumber}" style="background-color:lightblue; color:Blue;"><br><br><br></td>
+							<input type="text" title="Only 10 Numerical value is allowed" pattern="[0-9]{10}" name="phonenumber" value="${uplist.phonenumber}" style="background-color:lightblue; color:Blue;"><br><br><br></td>
 								
 							<button class="button">Update Profile</button>
 

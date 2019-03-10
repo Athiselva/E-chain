@@ -55,7 +55,7 @@ body {
 
 			<h3>Timesheet Report</h3>
 			<input type="date" name="ondate" style="width: 250px;"
-				min="2018-02-22" max="2019-08-02"><br>
+				min="2019-03-01" max="2019-03-10"><br>
 			<br>
 			<button class="button">Search</button>
 
@@ -103,12 +103,21 @@ body {
 		</div>
 
 	</form>
+	
+	
 	<form method="post" action="UpdateTimesheetServlet">
 		<center>
+			 
+ 			 <br>Timesheet Number
+ 			 
+ 			 <select name="tsnumber">
+ 			 <c:forEach var="tlist"  items="${TIMESHEET}"> 
+   			 <option class="required" value="${tlist.timesheetNumber}">${tlist.timesheetNumber}</option>
+     		 </c:forEach> 
+     		 </select><br>
+				
 			<br>
-			<br>
-			<br> Timesheet Number &nbsp; <input type="text" name="tsnumber">
-			&nbsp;&nbsp;&nbsp;&nbsp; Timesheet Status &nbsp; <input type="text"
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Timesheet Status<input type="text" pattern=".{6,30}"
 				name="timesheet"><br>
 			<br>
 			<br>
@@ -117,11 +126,16 @@ body {
 			<br>
 			<br>
 		</center>
-	</form><center>
+	</form>
+	
+	
+	
+	<center>
 	<form method="post" action="WelcomeServlet">
-			<button class="button button3"  >Home</button>
+	<button class="button button3"  >Home</button>
+	</form><br><br>
 			
-			</form><br><br>
+			
 		<form method="post" action="InvalidateServlet">
 		<button class="button button3"  >Logout</button>
  		</form></center>

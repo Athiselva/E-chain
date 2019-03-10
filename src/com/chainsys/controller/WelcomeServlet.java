@@ -38,7 +38,9 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String email=(String)session.getAttribute("email");
+		String name=(String)session.getAttribute("name");
 		request.setAttribute("email", email);
+		request.setAttribute("name", name);
 		RequestDispatcher rd = request.getRequestDispatcher("Welcome.jsp");
 		rd.include(request, response);
 	}

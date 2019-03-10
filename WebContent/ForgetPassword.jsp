@@ -45,22 +45,25 @@ body {
 <center>
 			<br><br><br><br><br><h2>Reset Password</h2><br>
 			
-			Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="name"><br><br>
 			Employee Id :&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="employeeid"><br><br>
-			Position :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="position"><br><br>
+			<input type="text" title="Only 4 Numerical value is allowed" pattern="[0-9]{4}"  name="employeeid"><br><br>
 			UserName :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="username"><br><br>
+			<input type="text" title="*6-20 Characters,*A-Z,*a-z & Special characters only allowed"
+			pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}" name="username"><br><br>
 			Email Id :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="email"><br><br>
-			Phone Number :&nbsp;<input type="text" name="phonenumber"><br><br>
+			<input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  name="email"><br><br>
+			Phone Number :&nbsp;<input pattern="[0-9]{10}" title="Only 10 Numerical value is allowed" type="text"  name="phonenumber"><br><br>
 			New Password :&nbsp;
-			<input type="text" name="password"><br><br>
+			<input type="text"  title="8-20 Characters,A-Z,a-z & Special characters only allowed"
+			pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" name="password"><br><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
-			<button class="button">Reset Password</button>
+			<button class="button">Reset Password</button><br><br><br>
+			</form>
 			
+			<form method="post" action="Loginpage.jsp">
+<center>
+				<br>
+			<button class="button button3"" style="vertical-align:middle"><span>Login</span></button>
 			
 			</center>
 			</form>

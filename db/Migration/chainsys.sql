@@ -1,3 +1,8 @@
+
+
+
+
+
 create table chainsys(employee_id number(20) primary key,employee_name varchar2(40),position varchar2(30),username varchar2(30) unique not null,
 password varchar2(30) not null,phone_number varchar2(30) unique not null,email varchar2(30) unique not null,date_of_birth date);
 

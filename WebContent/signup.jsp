@@ -47,18 +47,32 @@ body {
 			<center>
 			<h2>Sign Up</h2><br>
 			Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="name"><br><br>
-			Email Id :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email"><br><br>
+			<input type="text" title="4-20 Characters,A-z,a-z is only allowed" pattern="[a-zA-Z\s]{4,20}" name="name"><br><br>
+			Email Id :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" 
+			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+			name="email"><br><br>
 			Position :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="position"><br><br>
+			<input type="text" pattern="[a-zA-Z\s\s]{4,30}" name="position"><br><br>
 			 Date of Birth :
- &nbsp;&nbsp; <input type="date" name="dob" style="width: 170px;"  min="1900-02-22" max="20005-08-02"><br><br>
-			Phone Number :<input type="text" name="phonenumber"><br><br>
-			UserName :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="username"><br><br>
+ &nbsp;&nbsp; <input type="date" name="dob" style="width: 170px;"  min="1980-01-01" max="2000-01-01"><br><br>
+			Phone Number :<input type="text" title="Only 10 Numerical value is allowed" pattern="[0-9]{10}" name="phonenumber"><br><br>
+			UserName :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" title="6-20 Characters,A-Z,a-z & Special characters only allowed" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}"
+			 name="username"><br><br>
 			Password :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="password"><br><br>
+			<input type="text" title="8-20 Characters,A-Z,a-z & Special characters only allowed"
+			pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" 
+			name="password"><br><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 			<button class="button">Register</button>
+			</center><br><br></form>
+			
+			
+			<form method="post" action="Loginpage.jsp">
+<center>
+				<br>
+			<button class="button button3"" style="vertical-align:middle"><span>Login</span></button>
+			
 			</center>
+			</form>
 </body>
 </html>

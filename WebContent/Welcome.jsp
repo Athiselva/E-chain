@@ -69,7 +69,7 @@ body {
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				Logged in as ${email }</center>
 <br><br>
-<center><h1>Welcome ${Name }</h1><br></center>
+<center><h1>Welcome ${name }</h1><br></center>
 			<form method="post" action="SearchAttendance.jsp"><br>
 			
 		

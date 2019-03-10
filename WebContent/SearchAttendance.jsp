@@ -75,13 +75,13 @@ body {
 <br>
 <h2>From</h2>
   <input type="date" name="from" style="width: 250px;"
-       min="2018-02-22" max="2019-08-02"><br><br>
+       min="2018-01-01" max="2019-03-07"><br><br>
   
  <h2>To</h2>
   <input type="date" name="to" style="width: 250px;"
-       min="2018-02-22" max="2019-08-02"><br><br><br>
+       min="2018-01-01" max="2019-03-07"><br><br><br>
        <button class="button">Submit</button>
-  
+
   
   <br><br><br></form>
 <center>		

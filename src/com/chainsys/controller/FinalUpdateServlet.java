@@ -21,46 +21,50 @@ import com.chainsys.model.Chainsys;
 @WebServlet("/FinalUpdateServlet")
 public class FinalUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-    public FinalUpdateServlet() {
-        super();
-       
-    }
 
+	public FinalUpdateServlet() {
+		super();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		Chainsys chainsys = new Chainsys();
-		
+
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
 		chainsys.setName(request.getParameter("name"));
 		chainsys.setUsername(request.getParameter("username"));
 		chainsys.setPassword(request.getParameter("password"));
-		chainsys.setPhonenumber(Long.parseLong(request.getParameter("phonenumber")));
-		try {
-			HttpSession session=request.getSession();
-			int id=(int)session.getAttribute("id");
-			//String name=(String)session.getAttribute("name");
-			String email=(String)session.getAttribute("email");
-			chainsys.setEmployeeId(id);
-			chainsysDAO.updateProfile(chainsys);
-			ArrayList<Chainsys> ulist=new ArrayList<>();
-			chainsys.setEmployeeId(id);
-			ulist=chainsysDAO.viewProfile(chainsys);
-			request.setAttribute("PROFILE", ulist);
-			request.setAttribute("email", email);
-			RequestDispatcher rd2 = request.getRequestDispatcher("UpdatedSuccessfully.jsp");
+		chainsys.setPhonenumber(Long.parseLong(request
+				.getParameter("phonenumber")));
+
+		if((chainsys.getName().length()<4) || (chainsys.getUsername().length()<4) || (chainsys.getPassword().length()<4)){
+			RequestDispatcher rd2 = request
+					.getRequestDispatcher("UpdateServlet");
 			rd2.include(request, response);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		else
+		{
+			try {
+				HttpSession session = request.getSession();
+				int id = (int) session.getAttribute("id");
+				String email = (String) session.getAttribute("email");
+				chainsys.setEmployeeId(id);
+
+					chainsysDAO.updateProfile(chainsys);
+					ArrayList<Chainsys> ulist = new ArrayList<>();
+					chainsys.setEmployeeId(id);
+					ulist = chainsysDAO.viewProfile(chainsys);
+					request.setAttribute("PROFILE", ulist);
+					request.setAttribute("email", email);
+					RequestDispatcher rd2 = request
+							.getRequestDispatcher("UpdatedSuccessfully.jsp");
+					rd2.include(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
-
 }

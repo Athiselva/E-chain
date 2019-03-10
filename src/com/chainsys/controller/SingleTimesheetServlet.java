@@ -34,29 +34,37 @@ public class SingleTimesheetServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		LocalDate ondate = LocalDate.parse(request.getParameter("ondate"));
-
-		chainsys.setOndate(ondate);
-		HttpSession session = request.getSession();
-		session.setAttribute("ondate",ondate);
-
-		ArrayList<Chainsys> tlist = new ArrayList<>();
-		try {
-			int id=(int)session.getAttribute("id");
-			//String name=(String)session.getAttribute("name");
-			chainsys.setEmployeeId(id);
-			String email=(String)session.getAttribute("email");
-			tlist = chainsysDAO.ondateTimeSheet(chainsys);
-			request.setAttribute("TIMESHEET", tlist);
-			request.setAttribute("email", email);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		
-		RequestDispatcher rd = request.getRequestDispatcher("EnterTimesheet.jsp");
-		rd.include(request, response);
+		if((request.getParameter("ondate").length()>2)){
+			LocalDate ondate = LocalDate.parse(request.getParameter("ondate"));
+
+			chainsys.setOndate(ondate);
+			HttpSession session = request.getSession();
+			session.setAttribute("ondate",ondate);
+
+			ArrayList<Chainsys> tlist = new ArrayList<>();
+			try {
+				int id=(int)session.getAttribute("id");
+				//String name=(String)session.getAttribute("name");
+				chainsys.setEmployeeId(id);
+				String email=(String)session.getAttribute("email");
+				tlist = chainsysDAO.ondateTimeSheet(chainsys);
+				request.setAttribute("TIMESHEET", tlist);
+				request.setAttribute("email", email);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
+			RequestDispatcher rd = request.getRequestDispatcher("EnterTimesheet.jsp");
+			rd.include(request, response);
+		}
+		else{
+			RequestDispatcher rd = request.getRequestDispatcher("EnterTimesheet.jsp");
+			rd.include(request, response);
+		}
+		
 	}
 
 }

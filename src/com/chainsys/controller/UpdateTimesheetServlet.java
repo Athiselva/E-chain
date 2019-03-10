@@ -40,7 +40,10 @@ public class UpdateTimesheetServlet extends HttpServlet {
 		//String name=(String)session.getAttribute("name");
 		String email=(String)session.getAttribute("email");
 		LocalDate ondate=(LocalDate)session.getAttribute("ondate");
-		try {
+		
+		if(((request.getParameter("tsnumber")))!=null){
+		
+			try {
 			
 			chainsys.setTimesheetNumber(Integer.parseInt(request.getParameter("tsnumber")));
 			chainsys.setTaskStatus(request.getParameter("timesheet"));
@@ -50,9 +53,15 @@ public class UpdateTimesheetServlet extends HttpServlet {
 			request.setAttribute("email", email);
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTimesheetServlet");
 			rd.include(request, response);
-		} catch (SQLException e) {
+		
+			} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		}
+		else{
+			RequestDispatcher rd = request.getRequestDispatcher("EnterTimesheet.jsp");
+			rd.include(request, response);
 		}
 	}
 
