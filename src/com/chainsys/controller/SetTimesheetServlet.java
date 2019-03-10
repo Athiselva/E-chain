@@ -1,7 +1,6 @@
 package com.chainsys.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -15,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
 
-@WebServlet("/ResultTimesheetServlet")
-public class ResultTimesheetServlet extends HttpServlet {
+@WebServlet("/SetTimesheetServlet")
+public class SetTimesheetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request,
@@ -24,18 +23,19 @@ public class ResultTimesheetServlet extends HttpServlet {
 
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		ArrayList<Chainsys> tlist = new ArrayList<>();
 		HttpSession session = request.getSession();
 		int id = (int) session.getAttribute("id");
-		LocalDate ondate = (LocalDate) session.getAttribute("ondate");
-		chainsys.setEmployeeId(id);
-		chainsys.setOndate(ondate);
-		tlist = chainsysDAO.ondateTimeSheet(chainsys);
+		String name = (String) session.getAttribute("name");
+		String email = (String) session.getAttribute("email");
+		ArrayList<Chainsys> elist = new ArrayList<>();
+		elist = chainsysDAO.employeeList(chainsys);
+		request.setAttribute("email", email);
+		request.setAttribute("Name", name);
+		request.setAttribute("ID", id);
+		request.setAttribute("EMPLOYEES", elist);
+		RequestDispatcher rd = request.getRequestDispatcher("SetTimesheet.jsp");
+		rd.forward(request, response);
 
-		request.setAttribute("TIMESHEET", tlist);
-		RequestDispatcher rd = request
-				.getRequestDispatcher("UpdateTimesheet.jsp");
-		rd.include(request, response);
 	}
 
 }

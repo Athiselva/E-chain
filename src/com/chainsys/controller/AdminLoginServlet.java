@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/AdminLoginServlet")
+public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request,
@@ -22,26 +22,26 @@ public class LoginServlet extends HttpServlet {
 
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		chainsys.setUsername(request.getParameter("username"));
-		chainsys.setPassword(request.getParameter("password"));
+		chainsys.setAdminUsername(request.getParameter("username"));
+		chainsys.setAdminPassword(request.getParameter("password"));
 
-		if (chainsysDAO.login(chainsys)) {
+		if (chainsysDAO.adminLogin(chainsys)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", request.getParameter("username"));
-			session.setAttribute("id", chainsysDAO.getId(chainsys));
-			session.setAttribute("name", chainsysDAO.getEmployeeName(chainsys));
-			session.setAttribute("email", chainsysDAO.getEmail(chainsys));
-
+			session.setAttribute("id", chainsysDAO.adminGetId(chainsys));
+			session.setAttribute("name",
+					chainsysDAO.adminGetEmployeeName(chainsys));
+			session.setAttribute("email", chainsysDAO.adminGetEmail(chainsys));
 			RequestDispatcher rd = request
-					.getRequestDispatcher("WelcomeServlet");
-			rd.forward(request, response);
-
-		} else {
-			RequestDispatcher rd = request
-					.getRequestDispatcher("incorrectpassword.jsp");
+					.getRequestDispatcher("AdminWelcomeServlet");
 			rd.forward(request, response);
 		}
 
+		else {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("AdminIncorrectPassword.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

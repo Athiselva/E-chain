@@ -26,6 +26,34 @@ public class Chainsys {
 	private LocalDate todate;
 	private LocalDate ondate;
 
+	private String adminUsername;
+	private String adminPassword;
+	private String adminName;
+
+	public String getAdminUsername() {
+		return adminUsername;
+	}
+
+	public void setAdminUsername(String adminUsername) {
+		this.adminUsername = adminUsername;
+	}
+
+	public String getAdminPassword() {
+		return adminPassword;
+	}
+
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
+	}
+
+	public String getAdminName() {
+		return adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
 	public int getEmployeeId() {
 		return employeeId;
 	}

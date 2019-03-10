@@ -107,6 +107,8 @@ body {
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" name="password" title="*8-20 Characters,*A-Z,*a-z & Special characters only allowed" class="form-control" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" required>
 		<div><br>
+		
+		<font color="red">Username or Password is invalid!</font>
 
 		</div><br>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button><br>

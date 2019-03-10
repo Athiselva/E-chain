@@ -8,13 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/DeleteEmployeeServlet")
+public class DeleteEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request,
@@ -22,26 +21,19 @@ public class LoginServlet extends HttpServlet {
 
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		chainsys.setUsername(request.getParameter("username"));
-		chainsys.setPassword(request.getParameter("password"));
+		chainsys.setEmployeeId(Integer.parseInt(request.getParameter("id")));
 
-		if (chainsysDAO.login(chainsys)) {
-			HttpSession session = request.getSession();
-			session.setAttribute("username", request.getParameter("username"));
-			session.setAttribute("id", chainsysDAO.getId(chainsys));
-			session.setAttribute("name", chainsysDAO.getEmployeeName(chainsys));
-			session.setAttribute("email", chainsysDAO.getEmail(chainsys));
-
+		if (chainsysDAO.deleteEmployee(chainsys) != 0) {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("WelcomeServlet");
+					.getRequestDispatcher("EmployeeDeleted.jsp");
 			rd.forward(request, response);
 
 		} else {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("incorrectpassword.jsp");
+					.getRequestDispatcher("AdminDeleteEmployee");
 			rd.forward(request, response);
-		}
 
+		}
 	}
 
 }

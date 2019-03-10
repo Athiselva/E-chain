@@ -1,7 +1,6 @@
 package com.chainsys.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -33,28 +32,23 @@ public class TimesheetServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		Chainsys chainsys = new Chainsys();
 		ChainsysDAO chainsysDAO = new ChainsysDAO();
-		
-		if((request.getParameter("from").length()>2 && (request.getParameter("to").length()>2))){
+
+		if ((request.getParameter("from").length() > 2 && (request
+				.getParameter("to").length() > 2))) {
 			LocalDate from = LocalDate.parse(request.getParameter("from"));
 			LocalDate to = LocalDate.parse(request.getParameter("to"));
-			
 
-			HttpSession session=request.getSession();
-			int id=(int)session.getAttribute("id");
-			String name=(String)session.getAttribute("name");
-			String email=(String)session.getAttribute("email");
+			HttpSession session = request.getSession();
+			int id = (int) session.getAttribute("id");
+			String name = (String) session.getAttribute("name");
+			String email = (String) session.getAttribute("email");
 			ArrayList<Chainsys> tlist = new ArrayList<>();
-			try {
-				chainsys.setFromDate(from);
-				chainsys.setTodate(to);
-				chainsys.setEmployeeId(id);
-				
-				tlist = chainsysDAO.viewTimeSheet(chainsys);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			chainsys.setFromDate(from);
+			chainsys.setTodate(to);
+			chainsys.setEmployeeId(id);
+
+			tlist = chainsysDAO.viewTimeSheet(chainsys);
+
 			request.setAttribute("email", email);
 			request.setAttribute("Name", name);
 			request.setAttribute("ID", id);
@@ -62,14 +56,12 @@ public class TimesheetServlet extends HttpServlet {
 			RequestDispatcher rd = request
 					.getRequestDispatcher("ShowTimesheet.jsp");
 			rd.include(request, response);
-		}
-		else{
+		} else {
 			RequestDispatcher rd = request
 					.getRequestDispatcher("SearchTimesheet.jsp");
 			rd.include(request, response);
 		}
-		
-		}
-		
+
+	}
 
 }

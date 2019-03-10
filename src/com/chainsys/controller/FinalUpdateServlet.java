@@ -1,7 +1,6 @@
 package com.chainsys.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -15,9 +14,6 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.dao.ChainsysDAO;
 import com.chainsys.model.Chainsys;
 
-/**
- * Servlet implementation class FinalUpdateServlet
- */
 @WebServlet("/FinalUpdateServlet")
 public class FinalUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,33 +34,28 @@ public class FinalUpdateServlet extends HttpServlet {
 		chainsys.setPhonenumber(Long.parseLong(request
 				.getParameter("phonenumber")));
 
-		if((chainsys.getName().length()<4) || (chainsys.getUsername().length()<4) || (chainsys.getPassword().length()<4)){
+		if ((chainsys.getName().length() < 4)
+				|| (chainsys.getUsername().length() < 4)
+				|| (chainsys.getPassword().length() < 4)) {
 			RequestDispatcher rd2 = request
 					.getRequestDispatcher("UpdateServlet");
 			rd2.include(request, response);
-		}
-		else
-		{
-			try {
-				HttpSession session = request.getSession();
-				int id = (int) session.getAttribute("id");
-				String email = (String) session.getAttribute("email");
-				chainsys.setEmployeeId(id);
+		} else {
+			HttpSession session = request.getSession();
+			int id = (int) session.getAttribute("id");
+			String email = (String) session.getAttribute("email");
+			chainsys.setEmployeeId(id);
 
-					chainsysDAO.updateProfile(chainsys);
-					ArrayList<Chainsys> ulist = new ArrayList<>();
-					chainsys.setEmployeeId(id);
-					ulist = chainsysDAO.viewProfile(chainsys);
-					request.setAttribute("PROFILE", ulist);
-					request.setAttribute("email", email);
-					RequestDispatcher rd2 = request
-							.getRequestDispatcher("UpdatedSuccessfully.jsp");
-					rd2.include(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			chainsysDAO.updateProfile(chainsys);
+			ArrayList<Chainsys> ulist = new ArrayList<>();
+			chainsys.setEmployeeId(id);
+			ulist = chainsysDAO.viewProfile(chainsys);
+			request.setAttribute("PROFILE", ulist);
+			request.setAttribute("email", email);
+			RequestDispatcher rd2 = request
+					.getRequestDispatcher("UpdatedSuccessfully.jsp");
+			rd2.include(request, response);
 		}
-		
+
 	}
 }

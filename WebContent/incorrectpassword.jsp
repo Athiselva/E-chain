@@ -81,6 +81,9 @@ body {
 .button6 {
   color: blue;
 }
+.button7 {
+  color: red;
+}
 
 .color-red {
     color: #F00;
@@ -111,7 +114,9 @@ body {
 		<span>
 			
 		</span>
-		<a href="signup.jsp" class="button5" >Create an account</a>
+		<a href="signup.jsp" class="button5" >Create an account</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+<a href="AdminLogin.jsp" class="button7" >Admin Login</a>
 
 	</form>
 </body>
